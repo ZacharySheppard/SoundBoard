@@ -13,6 +13,8 @@ SoundBoard::SoundBoard(fs::path directory) noexcept {
 
 void SoundBoard::Run() {
   const auto samples = loadSamples();
+  ui_.SetOnClickCallback(
+      [this](fs::path path) { const auto success = player_.play(path); });
   ui_.render(samples);
 }
 

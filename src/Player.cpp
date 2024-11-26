@@ -25,13 +25,13 @@ std::string LoadFile(const std::string &filename, int count) {
 }
 } // namespace
 
-bool MP3Player::play(std::string filename) {
+bool MP3Player::play(fs::path filename) {
   if (!fs::exists(filename)) {
     log("couldn't find file");
     return false;
   };
 
-  auto alias = LoadFile(filename, count_);
+  auto alias = LoadFile(filename.string(), count_);
   count_++;
   PlayAlias(alias);
   return true;
